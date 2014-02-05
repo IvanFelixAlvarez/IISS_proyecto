@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    #menu
+        input(type="submit" id="crearnota" value="CREAR NOTA" data-tipo="modos")
+        br
+        input(type="submit" id="vernotas" value="VER NOTAS" data-tipo="modos")
+        br
+        input(type="submit" id="buscarnotas" value="BUSCAR NOTAS" data-tipo="modos")
+    #contenedor
+        form(id="formularionotas" action='/procesaformulario', method='post')
+            span Asunto: 
+            input(type="text" name="asunto" data-tipo="asunto")
+            span Autor: 
+            input(type="text" name="autor" data-tipo="autor")
+            textarea(name="contenido")
+            input(type="reset" value="Cancelar" data-tipo="cancelar")
+            input(type="submit" value="Enviar" data-tipo="enviar")

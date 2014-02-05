@@ -1,0 +1,26 @@
+$(window).load(function() {
+
+	$('#formularionotas').hide();
+
+	$('#crearnota').bind('click', function(){
+
+		//Muestra o oculta el contenido según el estado en el que esté actualmente
+		
+
+	});
+
+
+	$('#vernotas').bind('click', function(){
+
+
+
+	});
+
+
+	$('#buscarnotas').bind('click', function(){
+
+
+
+	});
+
+});
