@@ -60,10 +60,27 @@ io.sockets.on('connection', function (socket) {
 	"use strict";
 
 	//Solicitud de las notas a la base de datos.
-	socket.on('prueba', function (data) {
+	socket.on('actualizarDB', function (data) {
 
-		console.log("Socket de prueba");
+		var query = connection.query('SELECT * FROM Proyecto.notas', function(err, result) {
+  			if(err) console.log(err);
+  			db = result;
+  			console.log("Base de datos actualizada");
+			socket.emit('listadoNotas', db);
+		});
 
 	});
 
+	socket.on('obtenerNota', function (data) {
+
+		console.log('Nota enviada '+data.id);
+		socket.emit('darnota', { nota : db[data.id] });
+
+	});
+
+	socket.on('notasmostradas', function (data) {
+
+		console.log('Notas mostradas');
+		
+	});
 });

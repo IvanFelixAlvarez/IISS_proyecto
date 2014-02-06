@@ -239,6 +239,7 @@ a:hover {
     display: inline-block;
     border: 1px gray solid;
     padding: 20px;
+    margin-bottom: 20px;
     text-align: center;
     width: 40%;
     margin: 20px 0 0 20px;
