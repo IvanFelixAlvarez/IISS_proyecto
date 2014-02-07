@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    #contacto
+        h1 CONTACTO
+        h3 Correo electrónico:
+        p ismael.jerezibanez@alum.uca.es (Ismael Jerez)
+        p ivan.alvarezgarcia@alum.uca.es (Iván Félix Álvarez)
+        p thomas.zenkel@googlemail.com (Thomas Zhenkel)
+        br
+        h3 Número de teléfono:
+        p Móvil: 660 00 00 00
+        p Fijo: 956 00 00 00
+        br

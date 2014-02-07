@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    #ayuda
+        h3 Crear una nota
+        p 1. Para añadir una nota haga click en el bóton "CREAR NOTA" del panel principal.
+        p 2. A continuación rellen los campos que le aparecen a continuación (no olvide rellenar los campos obligatorios "Autor" y "Asunto").
+        p 3. Pulse el botón "Enviar" para crear la nota.
+        p 4 (opcional). Pulse el botón "Limpiar" para limpiar todos los campos del formulario.
+        br
+        h3 Ver una nota
+        p 1. Para ver una nota con detalle haga click en el botón "VER NOTAS" del panel principal.
+        p 2. Pulse el botón "VER" de la nota que desee.
+        br
+        h3 Modificar una nota
+        p 1. Para modificar una nota haga click en el botón "VER NOTAS" del panel principal.
+        p 2. Pulse el botón "MODIFICAR" de la nota que desee.
+        p 3. A continuación modifique los campos autocompletados a satisfacción.
+        p 4. Pulse el botón "Modificar" para que los cambios surjan efecto.
+        p 5 (opcional). Pulse el botón "Restaurar" para volver al contenido de los campos inicial.  
+

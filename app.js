@@ -5,24 +5,20 @@
 
 var express = require('express');
 var app = express();
-var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var server = app.listen(3000);
 var io = require('socket.io').listen(server);
 var db = []; //Para tener las notas.
-
+var routes = require('./routes/routes')(app);
 var util = require('util');
 var mysql = require('mysql');
+
 connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
 	password : ''
 });
-/* nombre del base de datos Proyecto
- * nombre del tabla: notas
- * attributos: id, asunto, autor, contenido, time */
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -41,8 +37,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-
 //Peticiones a la base de datos.
 
 app.post('/procesaformulario', function(req, res) {
@@ -54,6 +48,15 @@ app.post('/procesaformulario', function(req, res) {
 	});
     res.redirect('/');
 
+});
+
+app.post('/procesamodificador', function(req, res) {
+    var post  = {asunto: req.body.asunto, autor: req.body.autor, contenido: req.body.contenido};
+    var id = req.body.id;
+    var query = connection.query('UPDATE Proyecto.notas SET ? WHERE id = ' + id, post, function(err, result) {
+        if (err) console.log(err);
+    });
+    res.redirect('/');
 });
 
 io.sockets.on('connection', function (socket) {
@@ -77,6 +80,13 @@ io.sockets.on('connection', function (socket) {
 		socket.emit('darnota', { nota : db[data.id] });
 
 	});
+
+    socket.on('obtenerNotaModificar', function (data) {
+
+		console.log('Nota enviada '+data.id);
+		socket.emit('modificarNota', { nota : db[data.id] });
+
+	})
 
 	socket.on('notasmostradas', function (data) {
 

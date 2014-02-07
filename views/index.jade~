@@ -8,11 +8,14 @@ block content
         br
         input(type="submit" id="buscarnotas" value="BUSCAR NOTAS" data-tipo="modos")
     #contenedor
-        form(id="formularionotas" action='/procesaformulario', method='post')
+        form(id="formularionotas" action='/procesaformulario', method='post', name='formulario')
             span Asunto: 
-            input(type="text" name="asunto" data-tipo="asunto")
+            input(type="text" id="asunto" name="asunto" data-tipo="asunto")
             span Autor: 
-            input(type="text" name="autor" data-tipo="autor")
+            input(type="text" name="autor" id="autor" data-tipo="autor")
             textarea(name="contenido")
-            input(type="reset" value="Cancelar" data-tipo="cancelar")
+            input(type="reset" value="Limpiar" data-tipo="cancelar")
             input(type="submit" value="Enviar" data-tipo="enviar")
+        #contenedornotas
+        #modificadornotas
+            
