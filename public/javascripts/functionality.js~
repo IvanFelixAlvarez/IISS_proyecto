@@ -4,10 +4,12 @@ $(document).ready(function() {
 var socket = io.connect();
 
 $('#contenedornotas').hide();	
+$('#modificadornotas').hide();
 
 $('#crearnota').click(function() {
 	$('#formularionotas').show();
 	$('#contenedornotas').hide();
+	$('#modificadornotas').hide();
 });
 
 $("#vernotas").bind("click", function(){
@@ -18,30 +20,51 @@ $('#buscarnotas').bind('click', function(){
 });
 
 socket.on('listadoNotas', function (db) {
-		var cadena="";
-		/*for(var i=0; i<db.length; ++i){
+		var cadena = "";
+		for(var i = 0; i < db.length; ++i){
 			cadena += "<div class=\"decoradornota\"><a class=\"vercontenido\" id=\"" + 
 				i + "\" href=\"javascript:void(0)\">VER</a><a class=\"modificarcontenido\" id=\"" + 
 				i + "\" href=\"javascript:void(0)\">MODIFICAR</a><strong>" + db[i].time.substring(0,10) + 
 				"  Autor: </strong>" + db[i].autor.substring(0,13) + "  <strong>Asunto: </strong>" + 
 				db[i].asunto.substring(0,17) + "</div>";
-		}*/
+		}
 		$('#contenedornotas').html(cadena);
 
 		socket.emit('notasmostradas',{});
 
 		$('#formularionotas').hide();
+	    $('#modificadornotas').hide();
 		$('#contenedornotas').show();
 
 		$('.vercontenido').click(function(){
-			alert('Se ha pulsado '+$(this).attr('id'));
-			socket.emit('obtenerNota', {id : $(this).attr('id')});
-		});		
+			alert('Se ha pulsado '+ $(this).attr('id'));
+			socket.emit('obtenerNota', {id: $(this).attr('id')});
+		});	
+
+        $('.modificarcontenido').click(function(){
+            socket.emit('obtenerNotaModificar', {id: $(this).attr('id')});
+		});	
 });
 
 socket.on('darnota', function (db) {
 			alert(db.nota.autor);
 });
 
+
+socket.on('modificarNota', function (db) {
+    var cadena = "";
+    cadena = "<form id=\"modificadornota" + $(this).attr('id') + 
+             "\" action=\"/procesamodificador\" method=\"post\" name=\"modificador\">" +
+             "<span>Asunto: </span><input type=\"text\" name=\"asunto\" data-tipo=\"asunto\" value=\"" + db.nota.asunto + "\"></input>" +
+             "<span>Autor: </span><input type=\"text\" name=\"autor\" data-tipo=\"autor\" value=\"" + db.nota.autor + "\"></input>" +
+             "<input type=\"text\" name=\"id\" data-tipo=\"id\" value=\"" + db.nota.id + "\" readonly></input>" + 
+             "<textarea name=\"contenido\">" + db.nota.contenido + "</textarea>" + 
+             "<input type=\"submit\" value=\"Modificar\" data-tipo=\"enviar\"></input>" +
+             "</form>";
+    $('#modificadornotas').html(cadena);
+    $('#formularionotas').hide();
+    $('#contenedornotas').hide();
+    $('#modificadornotas').show();
+});
 
 });

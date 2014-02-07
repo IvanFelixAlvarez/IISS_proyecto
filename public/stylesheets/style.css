@@ -3,6 +3,7 @@ body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: #EEE;
+    z-index: 1;
 }
 
 #contenido {
@@ -132,6 +133,7 @@ input[data-tipo="cancelar"]:hover {
 }
 
 a {
+    text-decoration: none;
     margin: 0 3px;
     color: white;
     border: 2px lightgray outset;
@@ -293,6 +295,12 @@ a:hover {
     margin-right: 46px;
 }
 
+#contenedor input[data-tipo="id"] {
+    border: none;
+    width: 0;
+    height: 0;
+}
+
 textarea[name="contenido"] {
     width: 97.5%;
     height: 230px;
@@ -416,3 +424,72 @@ textarea[name="contenido"] {
     font-weight: bold;
 }
 /* -- Fin estilos para "contenedornotas" */
+
+#contacto {
+    text-align: center;
+    margin: 40px 20px;
+}
+
+#ayuda {
+    margin: 40px 300px;
+}
+
+#ayuda h3 {
+    text-align: center;
+}
+
+#popup {
+    position: absolute;
+    background: none repeat scroll 0 0 #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    border-radius: 4px 4px 4px 4px !important;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5) !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    width:500px;
+    display: none;
+    z-index: 1001;
+}
+
+#content_popup_title {
+    background: url("./images/header-bg.png") repeat-x scroll left center #404040 !important;
+    border-bottom: medium none !important;
+    border-radius: 4px 4px 0 0 !important;
+    box-shadow: 0 1px 0 #868687 inset !important;
+    height: 25px;
+    line-height: 1 !important;
+    overflow: hidden !important;
+    padding: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    position: relative !important;
+    text-align: left !important;
+    width: 99% !important;
+}
+
+#popup_title {
+    float:left;
+    color:#CCCCCC;
+    font-weight:bold;
+    font-size:14px;
+}
+
+
+#popup_close {
+    float:right;
+    margin-right: 15px;
+}
+
+#popup_content {
+    padding: 10px !important;
+}
+
+#popup_footer {
+    background: none repeat scroll 0 0 #F2F2F2 !important;
+    border-radius: 0 0 4px 4px !important;
+    border-top: 1px solid #AAAAAA !important;
+    font-size: 90% !important;
+    padding: 5px 0 !important;
+    text-align: right !important;
+    padding:5px;
+}
