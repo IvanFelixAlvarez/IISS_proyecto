@@ -4,15 +4,15 @@ block content
     #popup
             #content_popup_title
                 #popup_title
-                    p Archivo Adjunto
+                    p(id='tituloNota')
                 #popup_close
                     a(href='#' id='close')
                        img(src='./images/close.png')
             #popup_content
-                p Parrafo 1
-                p Lorep Ipsum
+                p(id='autorNota')
+                p <strong>Contenido</strong>
+                p(id='contenidoNota')
             #popup_footer
-                p content footer
     #menu
         input(type="submit" id="crearnota" value="CREAR NOTA" data-tipo="modos")
         br
