@@ -4,17 +4,18 @@ html
     title nodeNotas
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    #popup-overlay
     #contenido
         #header
             h2 nodeNotas3000
             #panel
-                a Crear nota
-                a Ver notas
-                span Búsqueda
-                input(type="text" id="buscar")
+                a(href='/') Inicio
+                a(href='/contacto') Contacto
+                a(href='/ayuda') Ayuda
         block content
     #footer
         &copy; Iván Félix Álvarez, Ismael Jerez y Thomas Zhenkel.
         span 2013-2014. IISS.
+    script(type='text/javascript', src="/socket.io/socket.io.js")
     script(src='/javascripts/jquery-2.1.0.js')
     script(src='/javascripts/functionality.js')
