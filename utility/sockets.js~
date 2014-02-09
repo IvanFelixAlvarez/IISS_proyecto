@@ -1,4 +1,6 @@
+/*jslint node: true */
 /* global module */
+/* global console */
 
 module.exports = function (io, connection) {
     'use strict';
@@ -7,35 +9,34 @@ module.exports = function (io, connection) {
     io.sockets.on('connection', function (socket) {
 
         //Solicitud de las notas a la base de datos.
-        socket.on('actualizarDB', function (data) {
+        socket.on('actualizarDB', function () {
 
-            var query = connection.query('SELECT * FROM Proyecto.notas', function (err, result) {
-                    if (err) { console.log(err); }
-      			db = result;
-      			console.log("Base de datos actualizada");
-			    socket.emit('listadoNotas', db);
-		    });
+            connection.query('SELECT * FROM Proyecto.notas', function (err, result) {
+                if (err) { console.log(err); }
+                db = result;
+                console.log("Base de datos actualizada");
+                socket.emit('listadoNotas', db);
+            });
+        });
 
-	    });
+        socket.on('obtenerNota', function (data) {
 
-	    socket.on('obtenerNota', function (data) {
+            console.log('Nota enviada ' + data.id);
+            socket.emit('darnota', { nota : db[data.id] });
 
-		    console.log('Nota enviada '+data.id);
-		    socket.emit('darnota', { nota : db[data.id] });
-
-	    });
+        });
 
         socket.on('obtenerNotaModificar', function (data) {
 
-		    console.log('Nota enviada '+data.id);
-		    socket.emit('modificarNota', { nota : db[data.id] });
+            console.log('Nota enviada ' + data.id);
+            socket.emit('modificarNota', { nota : db[data.id] });
 
-	    })
+        });
 
-	    socket.on('notasmostradas', function (data) {
+        socket.on('notasmostradas', function () {
 
-		    console.log('Notas mostradas');
-		
-	    });
+            console.log('Notas mostradas');
+
+        });
     });
 };

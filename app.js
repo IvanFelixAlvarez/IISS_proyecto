@@ -5,14 +5,16 @@ var express = require('express'),
     app = express(),
     http = require('http'),
     path = require('path'),
-    server = app.listen(3000),
-    io = require('socket.io').listen(server),
     util = require('util'),
     mysql = require('mysql'),
-    connection = mysql.createConnection({ host : 'localhost', user : 'root', password : ''});
+    connection = mysql.createConnection({ host : 'db4free.net', user : 'ismaelivanthomas', password : 'disfrutalafruta'});
 
 // all environments
 app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port')),
+    io = require('socket.io').listen(server);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());

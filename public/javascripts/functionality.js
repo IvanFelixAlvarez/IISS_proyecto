@@ -8,9 +8,6 @@ $(document).ready(function () {
 
     var socket = io.connect();
 
-    $('#contenedornotas').hide();
-    $('#modificadornotas').hide();
-
     $('#formularionotas').submit(function () {
         if ($('#asunto').val() === '' || $('#autor').val() === '') {
             alert('Rellene los campos obligatorios: Autor y Asunto.');

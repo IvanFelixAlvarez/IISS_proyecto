@@ -1,6 +1,5 @@
 body {
     min-width: 1150px;
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: #EEE;
     z-index: 1;
@@ -305,6 +304,11 @@ textarea[name="contenido"] {
     border-radius: 4px;
     height: 297px;
     margin-bottom: 17px;
+    display: none;
+}
+
+#modificadornotas {
+    display: none;
 }
 
 .decoradornota {
@@ -488,7 +492,7 @@ textarea[name="contenido"] {
     position: absolute;
     width: 100%;
     height: 100%;
-    margin: -58px 0 0 -58px;
+    margin: -27px 0 0 -7px;
     padding-bottom: 20px;
     z-index: 999;
     display:none;
