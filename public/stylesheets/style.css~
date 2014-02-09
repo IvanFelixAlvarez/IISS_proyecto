@@ -474,6 +474,7 @@ textarea[name="contenido"] {
 }
 
 #popup_content {
+    border-top: 1px lightgray;    
     padding: 10px !important;    
     height: 300px;
 }
