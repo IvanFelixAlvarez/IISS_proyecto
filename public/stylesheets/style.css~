@@ -301,7 +301,7 @@ textarea[name="contenido"] {
 #contenedornotas {
     background-color: white;
     overflow-y: scroll;
-    border: 1px solid lightgray inset;
+    border: 1px lightgray inset;
     border-radius: 4px;
     height: 297px;
     margin-bottom: 17px;
@@ -470,6 +470,7 @@ textarea[name="contenido"] {
 }
 
 #popup_content {
+    border-top: 1px lightgray;    
     padding: 10px !important;    
     height: 300px;
 }

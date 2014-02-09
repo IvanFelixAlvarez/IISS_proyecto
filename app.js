@@ -9,7 +9,7 @@ var express = require('express'),
     io = require('socket.io').listen(server),
     util = require('util'),
     mysql = require('mysql'),
-    connection = mysql.createConnection({ host : 'localhost', user : 'root', password : ''});
+    connection = mysql.createConnection({ host : 'db4free.net', user : 'ismaelivanthomas', password : 'disfrutalafruta'});
 
 // all environments
 app.set('port', process.env.PORT || 3000);

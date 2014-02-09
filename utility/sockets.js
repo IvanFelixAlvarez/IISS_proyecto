@@ -11,7 +11,7 @@ module.exports = function (io, connection) {
         //Solicitud de las notas a la base de datos.
         socket.on('actualizarDB', function () {
 
-            connection.query('SELECT * FROM Proyecto.notas', function (err, result) {
+            connection.query('SELECT * FROM proyectoiiss.notas', function (err, result) {
                 if (err) { console.log(err); }
                 db = result;
                 console.log("Base de datos actualizada");

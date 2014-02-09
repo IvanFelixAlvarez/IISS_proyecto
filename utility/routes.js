@@ -21,7 +21,7 @@ module.exports = function (app, connection) {
         console.dir(req);
         /*Escribe en la base de datos */
         var post  = {asunto: req.body.asunto, autor: req.body.autor, contenido: req.body.contenido};
-        connection.query('INSERT INTO Proyecto.notas SET ?', post, function (err, result) {
+        connection.query('INSERT INTO proyectoiiss.notas SET ?', post, function (err, result) {
             if (err) { console.log(err); }
         });
         res.redirect('/');
@@ -31,7 +31,7 @@ module.exports = function (app, connection) {
     app.post('/procesamodificador', function (req, res) {
         var post  = {asunto: req.body.asunto, autor: req.body.autor, contenido: req.body.contenido},
             id = req.body.id;
-        connection.query('UPDATE Proyecto.notas SET ? WHERE id = ' + id, post, function (err, result) {
+        connection.query('UPDATE proyectoiiss.notas SET ? WHERE id = ' + id, post, function (err, result) {
             if (err) { console.log(err); }
         });
         res.redirect('/');
